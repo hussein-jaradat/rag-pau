@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>المرشد الأكاديمي الذكي · جامعة فلسطين الأهلية</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:1280px 720px;margin:0}
+:root{--brand:#7d1d34;--brand-ink:#5c1225;--brand-2:#9a2843;--tint:#f6e9ec;--tint-2:#fbf4f5;--line:#ecdfe2;--gold:#b8891f;--text:#231a1d;--muted:#7a6d72;--ok:#2f6b3a}
+*{box-sizing:border-box}
+html,body{margin:0;background:#2a2326}
+body{font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,"DejaVu Sans",sans-serif;color:var(--text)}
+.s{width:1280px;height:720px;background:#fff;position:relative;overflow:hidden;margin:24px auto;padding:54px 70px 50px;display:flex;flex-direction:column;page-break-after:always;break-after:page}
+@media print{html,body{background:#fff}.s{margin:0}.nav{display:none}}
+.s .no{position:absolute;bottom:22px;left:70px;font-size:14px;color:var(--muted)}
+.s .foot{position:absolute;bottom:22px;right:70px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.s .foot img{width:22px}
+.k{font-size:17px;font-weight:600;color:var(--brand-2);margin:0 0 6px}
+h1{font-size:44px;line-height:1.25;margin:0 0 22px;color:var(--brand-ink);font-weight:700}
+h1 small{display:block;font-size:22px;color:var(--muted);font-weight:500;margin-top:6px}
+p,li{font-size:21px;line-height:1.7}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--tint-2);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.card h3{margin:0 0 6px;font-size:21px;color:var(--brand-ink)}
+.card p{margin:0;font-size:17px;line-height:1.65;color:#3b3034}
+.big{font-size:52px;font-weight:700;color:var(--brand);line-height:1.1}
+.cap{font-size:15px;color:var(--muted);margin-top:4px;line-height:1.5}
+.src{font-size:12.5px;color:var(--muted);margin-top:auto;padding-top:10px;line-height:1.5;direction:rtl}
+.src b{color:var(--brand)}
+.as{display:inline-block;background:#fff3d6;color:#8a5b00;border-radius:6px;padding:0 6px;font-size:.78em;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:18px}
+th{background:var(--brand);color:#fff;font-weight:600;padding:10px 12px;text-align:start}
+td{padding:9px 12px;border-bottom:1px solid var(--line)}
+tr:nth-child(even) td{background:var(--tint-2)}
+.up{color:var(--ok);font-weight:700}
+.pill{display:inline-block;background:var(--tint);color:var(--brand-ink);border-radius:999px;padding:4px 14px;font-size:15px;font-weight:600;margin:3px}
+/* cover */
+.cover{background:linear-gradient(135deg,#5c1225 0%,#7d1d34 55%,#9a2843 100%);color:#fff;justify-content:center}
+.cover h1{color:#fff;font-size:68px;margin:0}
+.cover .lead{font-size:28px;opacity:.92;margin:14px 0 34px}
+.cover .logo{position:absolute;top:50px;left:70px;width:150px;background:#fff;border-radius:22px;padding:10px}
+.cover .tags span{display:inline-block;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:6px 18px;margin:0 0 8px 8px;font-size:18px}
+.cover .meta{position:absolute;bottom:40px;right:70px;font-size:17px;opacity:.85}
+/* architecture */
+.flow{display:flex;align-items:stretch;gap:10px}
+.flow .st{flex:1;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+.flow .st b{display:block;color:var(--brand);font-size:18px;margin-bottom:4px}
+.flow .st span{font-size:14px;color:#4a3d42;line-height:1.5;display:block}
+.flow .ar{align-self:center;color:var(--brand);font-size:26px;font-weight:700}
+.lane{font-weight:700;color:var(--muted);font-size:15px;margin:6px 0 8px}
+.qa{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:12px}
+.qa .q{display:inline-block;background:var(--tint);border-radius:12px;padding:6px 14px;font-weight:600;font-size:18px;margin-bottom:8px}
+.qa .a{font-size:17px;line-height:1.7}
+.qa .c{font-size:13.5px;color:var(--brand);margin-top:6px}
+.cite{display:inline-block;background:var(--tint);color:var(--brand);border-radius:5px;padding:0 5px;font-size:13px;font-weight:700}
+.bar{height:16px;border-radius:8px;background:var(--line);overflow:hidden;margin:4px 0 2px}
+.bar i{display:block;height:100%;background:var(--brand)}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tl .ph{border-top:6px solid var(--brand);background:var(--tint-2);border-radius:0 0 14px 14px;padding:16px 18px}
+.tl .ph h3{margin:0 0 6px;color:var(--brand-ink);font-size:20px}
+.tl .ph ul{margin:0;padding-inline-start:20px} .tl .ph li{font-size:16px;line-height:1.6}
+.nav{position:fixed;bottom:14px;left:14px;color:#fff;font:14px sans-serif;opacity:.6}
+.present .s{margin:0 auto;display:none}.present .s.on{display:flex}
+.present{background:#000;height:100vh;display:grid;place-items:center;overflow:hidden}
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="s cover">
+  <img class="logo" src="logo.png" alt="">
+  <div class="k" style="color:#f3d27a">IEEE RAG Hackathon · Bethlehem University 2026</div>
+  <h1>المرشد الأكاديمي الذكي</h1>
+  <div class="lead">إجابة صحيحة، بمصدرها، وبلهجتك — من وثائق جامعة فلسطين الأهلية الرسمية</div>
+  <div class="tags"><span>RAG هجين</span><span>عربي ولهجة محكية</span><span>صوت ↔ صوت</span><span>نماذج مفتوحة المصدر ومجانية</span></div>
+  <div class="meta">الفريق: يوسف شعيبات · حسين جرادات — جامعة فلسطين الأهلية<br><span style="font-size:15px;opacity:.8">Yousef Sheebat · Hussein Jaradat</span></div>
+</section>
+
+<!-- 2. PROBLEM -->
+<section class="s">
+  <div class="k">المشكلة</div>
+  <h1>المعلومة موجودة… لكنها ضائعة بين اللوائح والأدلة والخطط</h1>
+  <div class="g3" style="margin-bottom:22px">
+    <div class="card"><h3>سارة · سنة أولى</h3><p>«كم مادة بقدر أسجل بأول فصل؟» لا تعرف نظام الساعات المعتمدة.</p></div>
+    <div class="card"><h3>أحمد · سنة ثالثة</h3><p>«رسبت بمادة، هل بتأثر على تسجيلي للمادة اللي بعدها؟»</p></div>
+    <div class="card"><h3>ليلى · سنة رابعة</h3><p>«شو بقي لي عشان أتخرج؟» تحتاج إجابة دقيقة لا تخميناً.</p></div>
+  </div>
+  <div class="g4">
+    <div><div class="big">225,418</div><div class="cap">طالب تعليم عالٍ في فلسطين (جامعات وكليات، 2022/23)</div></div>
+    <div><div class="big">26,486</div><div class="cap">خريجاً سنوياً من جامعات الضفة (2022/23)</div></div>
+    <div><div class="big">1:296</div><div class="cap">مرشد لكل 296 طالباً — الوسيط في الجامعات الأمريكية</div></div>
+    <div><div class="big">60</div><div class="cap">وثيقة رسمية في جامعتنا وحدها: دليلان، لوائح، 48 خطة دراسية</div></div>
+  </div>
+  <p style="font-size:18px;margin:18px 0 0">الإجابة الخاطئة مكلفة: ساعات ضائعة، فصل إضافي، أو إنذار أكاديمي. والطلاب يسألون <b>بلهجتهم</b> والوثائق مكتوبة <b>بالفصحى القانونية</b>.</p>
+  <div class="src"><b>المصادر:</b> PCBS، التعليم 1994–2024 · PCBS، مؤشرات التعليم المختارة 2024 (الضفة) · NACADA, Advisor Load survey (الوسيط 296:1، لا تتوفر نسبة فلسطينية — قد تكون أسوأ <span class="as">افتراض</span>) · موقع paluniv.edu.ps</div>
+  <div class="no">2</div>
+</section>
+
+<!-- 3. SOLUTION + WHY RAG -->
+<section class="s">
+  <div class="k">الحل</div>
+  <h1>مرشد يجيب من وثائق الجامعة فقط، ويثبت كل إجابة بمصدرها</h1>
+  <div class="g2">
+    <div>
+      <div class="card" style="margin-bottom:14px"><h3>✓ يفهم اللهجة والصوت</h3><p>«شو بصير إذا غبت أكثر من المسموح؟» بالكتابة أو بالصوت، ويرد بصوت.</p></div>
+      <div class="card" style="margin-bottom:14px"><h3>✓ يثبت كل إجابة</h3><p>رقم مصدر بعد كل معلومة + نافذة تعرض النص الأصلي من اللائحة مع رابطه الرسمي.</p></div>
+      <div class="card"><h3>✓ يقول «لا أعرف» بصدق</h3><p>يرفض ما ليس في الوثائق ويحيل إلى عمادة القبول والتسجيل.</p></div>
+    </div>
+    <div>
+      <table>
+        <tr><th>لماذا RAG؟</th><th>المشكلة في البديل</th></tr>
+        <tr><td>نموذج لغوي وحده</td><td>يهلوس، لا يعرف لوائحنا، بلا مصدر</td></tr>
+        <tr><td>بحث نصي تقليدي</td><td>لا يفهم اللهجة، ولا يجمع إجابة</td></tr>
+        <tr><td>Fine-tuning</td><td>مكلف، يتقادم مع كل لائحة جديدة، بلا اقتباس</td></tr>
+        <tr><td><b>RAG (حلنا)</b></td><td class="up">محدّث فوراً · بمصدر · بتكلفة شبه صفرية</td></tr>
+      </table>
+      <p style="font-size:17px;margin-top:16px">تحديث اللائحة = رفع ملف جديد من لوحة الإدارة. لا إعادة تدريب.</p>
+    </div>
+  </div>
+  <div class="no">3</div>
+</section>
+
+<!-- 4. ARCHITECTURE -->
+<section class="s">
+  <div class="k">المعمارية والتقنيات</div>
+  <h1>RAG هجين مصمم للعربية</h1>
+  <div class="lane">① تجهيز المعرفة (مرة واحدة)</div>
+  <div class="flow">
+    <div class="st"><b>جمع آلي</b><span>60 وثيقة من paluniv.edu.ps<br>PDF + صفحات 48 برنامجاً</span></div><div class="ar">←</div>
+    <div class="st"><b>تنظيف عربي</b><span>NFKC · إزالة القوائم والترويسات<br>إصلاح النص المقلوب</span></div><div class="ar">←</div>
+    <div class="st"><b>تقطيع ذكي</b><span>حسب البند/العنوان<br>كل مساق في الخطة = سجل</span></div><div class="ar">←</div>
+    <div class="st"><b>فهرس هجين</b><span>BM25 عربي مطبّع<br>+ multilingual-e5 (محلي)</span></div>
+  </div>
+  <div class="lane" style="margin-top:16px">② الإجابة (مع كل سؤال)</div>
+  <div class="flow">
+    <div class="st"><b>فهم السؤال</b><span>لهجة ← فصحى<br>دمج سياق المتابعة</span></div><div class="ar">←</div>
+    <div class="st"><b>استرجاع</b><span>بحث هجين + دمج RRF<br>تفضيل الإصدار الأحدث</span></div><div class="ar">←</div>
+    <div class="st"><b>بوابة رفض</b><span>قبل النموذج: لا دليل<br>= «لا أعرف» بلا تكلفة</span></div><div class="ar">←</div>
+    <div class="st"><b>توليد مؤرَّض</b><span>Qwen 3.8 (مفتوح المصدر)<br>اقتباس [n] لكل معلومة</span></div><div class="ar">←</div>
+    <div class="st"><b>تحقق</b><span>فحص أرقام المصادر<br>شارة ثقة للإجابة</span></div>
+  </div>
+  <div class="g3" style="margin-top:20px">
+    <div class="card"><h3>لماذا هجين؟</h3><p>BM25 يلتقط الأرقام الدقيقة (رقم المساق، البند)، والمتجهات تلتقط المعنى واللهجة.</p></div>
+    <div class="card"><h3>لماذا هذه النماذج؟</h3><p>قارنّا 3 خيارات مجانية بالتجربة؛ Qwen عبر Groq: عربية قوية وسرعة ~1 ث، مع احتياطي تلقائي gpt-oss-120b.</p></div>
+    <div class="card"><h3>خصوصية</h3><p>Embeddings محلية، حجب الأرقام والإيميلات من السجلات، ومسار محلي كامل عبر Ollama.</p></div>
+  </div>
+  <div class="no">4</div>
+</section>
+
+<!-- 5. DEMO -->
+<section class="s">
+  <div class="k">العرض العملي — إجابات حقيقية من النظام</div>
+  <h1 style="margin-bottom:16px">أمثلة: مباشر · جدول · خارج المستندات</h1>
+  <div class="g2" style="gap:18px">
+    <div>
+      <div class="qa"><span class="q">كم ساعة بقدر أسجل بالفصل؟</span>
+        <div class="a">الحد الأعلى العادي <b>18 ساعة معتمدة</b> <span class="cite">1</span>، ويُسمح بـ <b>21 ساعة</b> فقط في فصل التخرج أو بمعدل تراكمي 80% فأعلى <span class="cite">1</span>. الحد الأدنى 12 ساعة <span class="cite">1</span>، والمنذر أكاديمياً لا يتجاوز 12 ساعة <span class="cite">4</span>. <i>هل أنت في فصل التخرج؟</i></div>
+        <div class="c">📄 الأنظمة واللوائح للقبول والتسجيل — البند (4) · paluniv.edu.ps/?page_id=136966</div></div>
+      <div class="qa"><span class="q">كم عدد الساعات المعتمدة لبرنامج تكنولوجيا المعلومات؟</span>
+        <div class="a">عدد الساعات المعتمدة لبرنامج تكنولوجيا المعلومات هو <b>133 ساعة معتمدة</b> <span class="cite">4</span>.</div>
+        <div class="c">📄 برنامج تكنولوجيا المعلومات — نبذة عن البرنامج · ?page_id=3207</div></div>
+    </div>
+    <div>
+      <div class="qa" style="background:#fffcf6;border-color:#ead8b8"><span class="q">متى موعد امتحان الخوارزميات الأسبوع القادم؟</span>
+        <div class="a">عذراً، لا تتوفر لدي معلومات عن هذا السؤال في المستندات المتاحة. يرجى مراجعة <b>عمادة القبول والتسجيل</b> (reg@paluniv.edu.ps · تحويلة 142).</div></div>
+      <div class="card"><h3>في الواجهة</h3><p>🎙️ سؤال بالصوت ورد صوتي · 📄 «عرض المصدر» يفتح النص الأصلي مظللاً · 👍👎 تقييم · شارة ثقة · «كيف وصل المرشد للإجابة؟» · حفظ المحادثات · لوحة إدارة.</p></div>
+      <p style="font-size:16px;color:var(--muted);margin-top:12px">الفيديو المرفق (2:30) يعرض المسار كاملاً.</p>
+    </div>
+  </div>
+  <div class="no">5</div>
+</section>
+
+<!-- 6. EVALUATION -->
+<section class="s">
+  <div class="k">التقييم — الدليل أنه يعمل</div>
+  <h1 style="margin-bottom:14px">من 42% إلى 92% في دقة الاسترجاع بتحليل الأخطاء</h1>
+  <div class="g2" style="grid-template-columns:1.1fr .9fr">
+    <table>
+      <tr><th>المقياس</th><th>Baseline</th><th>بعد التحسين</th></tr>
+      <tr><td>دقة الاسترجاع Hit@4</td><td>42%</td><td class="up">92%</td></tr>
+      <tr><td>MRR (ترتيب النتيجة الصحيحة)</td><td>0.33</td><td class="up">0.81</td></tr>
+      <tr><td>دقة الإجابات</td><td>73%</td><td class="up">87%</td></tr>
+      <tr><td>دقة الاقتباس</td><td>25%</td><td class="up">83%</td></tr>
+      <tr><td>رفض الأسئلة خارج النطاق</td><td>100%</td><td class="up">100%</td></tr>
+      <tr><td>متوسط زمن الإجابة</td><td>3.6 ث</td><td class="up">3.1 ث</td></tr>
+    </table>
+    <div>
+      <div class="card" style="margin-bottom:12px"><h3>15 سؤال اختبار · 7 أنواع</h3><p>مباشر · لهجة · جدول · متعدد المستندات · متابعة · غير موجود · خارج النطاق</p></div>
+      <div class="card"><h3>ماذا اكتشفنا وأصلحنا</h3><p>① مسارات Windows منعت ربط عناوين البرامج<br>② بيانات تجريبية اختلطت بالحقيقية<br>③ صفحات البرامج استُبعدت عند الجمع<br>④ «؟» العربية التصقت بآخر كلمة في البحث</p></div>
+    </div>
+  </div>
+  <p style="font-size:16.5px;margin:14px 0 0"><b>ما زال يفشل بصراحة:</b> مساق باسم مشترك بين برامج (الحل: أن يسأل «أي برنامج؟») · ونظام البكالوريوس PDF ممسوح ضوئياً (الحل: OCR عربي).</p>
+  <div class="src">التقرير الكامل: eval/report_final.md في المستودع · القياس آلي بـ eval/run_eval.py</div>
+  <div class="no">6</div>
+</section>
+
+<!-- 7. MARKET -->
+<section class="s">
+  <div class="k">تحليل السوق</div>
+  <h1>السوق: الجامعات الفلسطينية أولاً، ثم المنطقة</h1>
+  <div class="g2" style="grid-template-columns:1fr 1fr;align-items:center">
+    <div>
+      <div style="margin-bottom:18px"><div class="cap" style="font-size:17px;color:var(--text)"><b>TAM</b> — كل طلاب التعليم العالي في فلسطين</div><div class="bar"><i style="width:100%"></i></div><div class="cap">225,418 طالب × $2/طالب/سنة ≈ <b>$451K سنوياً</b></div></div>
+      <div style="margin-bottom:18px"><div class="cap" style="font-size:17px;color:var(--text)"><b>SAM</b> — طلاب الضفة الغربية (قابلون للوصول الآن)</div><div class="bar"><i style="width:61%"></i></div><div class="cap">136,477 طالب × $2 ≈ <b>$273K سنوياً</b></div></div>
+      <div><div class="cap" style="font-size:17px;color:var(--text)"><b>SOM</b> — أول سنتين: جامعتان (~10% من SAM)</div><div class="bar"><i style="width:10%"></i></div><div class="cap">13,650 طالب × $2 ≈ <b>$27K سنوياً</b> <span class="as">افتراض</span></div></div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:12px"><h3>العملاء المستهدفون</h3><p>13 جامعة · 9 كليات جامعية · 11 كلية مجتمع في فلسطين. صاحب القرار: نائب الرئيس للشؤون الأكاديمية وعميد القبول والتسجيل.</p></div>
+      <div class="card"><h3>لماذا الآن؟</h3><p>87.8% من البالغين يستخدمون الإنترنت و85.7% يملكون هاتفاً ذكياً — الطالب جاهز لمرشد رقمي.</p></div>
+    </div>
+  </div>
+  <div class="src"><b>المصادر:</b> PCBS التعليم 1994–2024 و2024 (الضفة) · US ITA: West Bank Higher Education System · PCBS مؤشرات تكنولوجيا المعلومات 2023 · سعر $2/طالب <span class="as">افتراض</span> مبني على ترخيص مؤسسي منخفض</div>
+  <div class="no">7</div>
+</section>
+
+<!-- 8. REVENUE MODEL -->
+<section class="s">
+  <div class="k">نموذج الإيرادات والتسعير</div>
+  <h1>الجامعة تدفع، والطالب يستخدمه مجاناً (B2B SaaS)</h1>
+  <div class="g3" style="margin-bottom:20px">
+    <div class="card"><h3>أساسي</h3><div class="big" style="font-size:40px">$2</div><div class="cap">لكل طالب سنوياً · حد أدنى $5,000</div><p style="margin-top:8px">مرشد ويب بالعربية، مصادر، رفض آمن، لوحة إدارة.</p></div>
+    <div class="card" style="border:2px solid var(--brand)"><h3>متقدم ★</h3><div class="big" style="font-size:40px">$3</div><div class="cap">لكل طالب سنوياً</div><p style="margin-top:8px">+ قناة واتساب، صوت، تحليلات فجوات المعرفة، «خطة تخرجي».</p></div>
+    <div class="card"><h3>إعداد وتكامل</h3><div class="big" style="font-size:40px">$1,000</div><div class="cap">مرة واحدة</div><p style="margin-top:8px">جمع الوثائق، الفهرسة، التخصيص بهوية الجامعة.</p></div>
+  </div>
+  <table>
+    <tr><th>اقتصاديات العميل (جامعة متوسطة 6,800 طالب)</th><th>القيمة</th></tr>
+    <tr><td>الإيراد السنوي من جامعة واحدة</td><td>≈ $13,600 <span class="as">افتراض</span></td></tr>
+    <tr><td>تكلفة الإجابة على نموذج مدفوع عند التوسع (Haiku 5.5)</td><td>≈ $0.0005 للإجابة · اليوم: $0 (خطة مجانية)</td></tr>
+    <tr><td>LTV (هامش 90% × 4 سنوات تعاقد)</td><td>≈ $49,000 <span class="as">افتراض</span></td></tr>
+    <tr><td>CAC (Pilot + مبيعات مباشرة)</td><td>≈ $3,000 ← LTV:CAC ≈ 16:1 (المعيار 3:1)</td></tr>
+  </table>
+  <div class="src"><b>المصادر:</b> تسعير Anthropic الرسمي (Haiku 5.5: $0.10/$0.50 لكل مليون token) · Geckoboard: LTV:CAC 3:1 معيار SaaS · الأرقام المعلّمة <span class="as">افتراض</span> تقديرات الفريق</div>
+  <div class="no">8</div>
+</section>
+
+<!-- 9. COSTS & PROJECTIONS -->
+<section class="s">
+  <div class="k">التكاليف والتوقعات المالية</div>
+  <h1>تكلفة تشغيل منخفضة جداً، ونقطة تعادل في السنة الأولى</h1>
+  <div class="g2" style="grid-template-columns:.9fr 1.1fr">
+    <table>
+      <tr><th>بند التكلفة الشهرية</th><th>القيمة</th></tr>
+      <tr><td>النموذج اللغوي (Groq مجاني / Haiku عند التوسع)</td><td>$0 – $15</td></tr>
+      <tr><td>استضافة (Hetzner CPX22 أو Render)</td><td>≈ $22</td></tr>
+      <tr><td>الفريق: 3 مؤسسين × $800 (من الشهر 4)</td><td>$2,400 <span class="as">افتراض</span></td></tr>
+      <tr><td>تسويق ومبيعات</td><td>$300 <span class="as">افتراض</span></td></tr>
+      <tr><td><b>المجموع الثابت</b></td><td><b>≈ $2,740</b></td></tr>
+    </table>
+    <table>
+      <tr><th></th><th>السنة 1</th><th>السنة 2</th><th>السنة 3</th></tr>
+      <tr><td>الجامعات المشتركة</td><td>2</td><td>5</td><td>9 (+الأردن)</td></tr>
+      <tr><td>الإيرادات</td><td>$29K</td><td>$71K</td><td>$126K</td></tr>
+      <tr><td>التكاليف</td><td>$26K</td><td>$35K</td><td>$44K</td></tr>
+      <tr><td><b>صافي الربح</b></td><td class="up">+$3K</td><td class="up">+$36K</td><td class="up">+$82K</td></tr>
+    </table>
+  </div>
+  <div class="card" style="margin-top:20px"><h3>نقطة التعادل</h3><p>التكلفة الثابتة ≈ $2,740 شهرياً ≈ $33K سنوياً ← نصل للتعادل عند <b>جامعتين ونصف</b> تقريباً، أي حوالي <b>الشهر 10–12</b> بعد التعاقد مع الجامعة الثانية. أكبر مخاطرة: طول دورة المبيعات في الجامعات — نخففها بـ Pilot مجاني لفصل واحد.</p></div>
+  <div class="src"><b>المصادر:</b> Hetzner Cloud CPX22 €19.99/شهر · Render من $7/شهر · Groq Free tier · الإيرادات تشمل رسوم الإعداد $1,000/جامعة جديدة · كل التوقعات <span class="as">افتراض</span></div>
+  <div class="no">9</div>
+</section>
+
+<!-- 10. MARKETING -->
+<section class="s">
+  <div class="k">خطة التسويق</div>
+  <h1 style="margin-bottom:16px">Pilot يثبت الأثر، ثم دراسة حالة تبيع للجامعات</h1>
+  <div class="g2" style="grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px">
+    <div class="card"><h3>الجمهور</h3><p><b>المشتري:</b> نائب الرئيس للشؤون الأكاديمية، عمادة القبول والتسجيل، مدير تكنولوجيا المعلومات.<br><b>المستخدم:</b> الطلاب، خصوصاً سنة أولى والمتعثرين أكاديمياً.<br><b>الرسالة:</b> «وفّر وقت دائرة التسجيل، وأعطِ كل طالب مرشداً على مدار الساعة.»</p></div>
+    <div class="card"><h3>القنوات والميزانية (90 يوماً ≈ $1,500 <span class="as">افتراض</span>)</h3><p>عروض مباشرة لعمادات القبول + LinkedIn ($300) · سفراء طلاب واتحاد الطلبة ($400) · Reels على Instagram — وصول إعلاني 1.65 مليون في فلسطين ($600) · فعاليات IEEE والأندية ($200)</p></div>
+  </div>
+  <div class="tl">
+    <div class="ph"><h3>الأيام 1–30 · Pilot</h3><ul><li>إطلاق مجاني في جامعة فلسطين الأهلية</li><li>ربط مع عمادة القبول والتسجيل</li><li>هدف: 500 طالب نشط</li></ul></div>
+    <div class="ph"><h3>الأيام 31–60 · إثبات</h3><ul><li>قياس: نسبة الإجابة، 👍، الأسئلة المتكررة</li><li>دراسة حالة بالأرقام</li><li>عروض لـ 5 جامعات</li></ul></div>
+    <div class="ph"><h3>الأيام 61–90 · تعاقد</h3><ul><li>عقد مدفوع + خطاب نوايا (LOI) ثانٍ</li><li>إطلاق قناة واتساب</li><li>قائمة انتظار 3 جامعات</li></ul></div>
+  </div>
+  <p style="font-size:16.5px;margin:14px 0 0"><b>مؤشرات النجاح:</b> ≥80% أسئلة تُجاب دون تحويل · ≥85% تقييم إيجابي · −30% زيارات دائرة التسجيل للأسئلة المتكررة · 2 عقد/LOI بنهاية 90 يوماً <span class="as">أهداف</span></p>
+  <div class="src"><b>المصادر:</b> DataReportal Digital 2025: Palestine (وصول إعلانات Instagram 1.65M) · الميزانية والأهداف تقديرات الفريق</div>
+  <div class="no">10</div>
+</section>
+
+<!-- 11. COMPETITION -->
+<section class="s">
+  <div class="k">المنافسون والتميز</div>
+  <h1>لا يوجد اليوم بديل يجمع الدقة والمصدر واللهجة</h1>
+  <table style="font-size:17px">
+    <tr><th>البديل الحالي</th><th>يعرف لوائح الجامعة</th><th>يذكر المصدر</th><th>يفهم اللهجة</th><th>متاح 24/7</th><th>يرفض بدل أن يخترع</th></tr>
+    <tr><td>المرشد الأكاديمي البشري</td><td>✓</td><td>أحياناً</td><td>✓</td><td>✗ (1:296)</td><td>✓</td></tr>
+    <tr><td>بوابة الجامعة / نظام التسجيل</td><td>جزئياً</td><td>✗</td><td>✗</td><td>✓</td><td>—</td></tr>
+    <tr><td>مجموعات فيسبوك وواتساب الطلابية</td><td>✗ إشاعات</td><td>✗</td><td>✓</td><td>✓</td><td>✗</td></tr>
+    <tr><td>ChatGPT / Gemini العام</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✗ يهلوس</td></tr>
+    <tr><td><b>المرشد الأكاديمي الذكي</b></td><td class="up">✓</td><td class="up">✓ + النص الأصلي</td><td class="up">✓ + صوت</td><td class="up">✓</td><td class="up">✓</td></tr>
+  </table>
+  <div class="g3" style="margin-top:20px">
+    <div class="card"><h3>خندقنا</h3><p>خط معالجة مصمم للوثائق الجامعية العربية: الخطط كسجلات، البنود كوحدات، تفضيل الإصدار الأحدث.</p></div>
+    <div class="card"><h3>فجوات المعرفة</h3><p>كل سؤال بلا إجابة يصبح طلباً لوثيقة جديدة — النظام يتحسن مع الاستخدام.</p></div>
+    <div class="card"><h3>تكلفة شبه صفرية</h3><p>نماذج مفتوحة المصدر وخطط مجانية، وتبديل النموذج بسطر واحد دون ارتباط بمزود.</p></div>
+  </div>
+  <div class="no">11</div>
+</section>
+
+<!-- 12. TEAM + NEXT -->
+<section class="s">
+  <div class="k">الفريق والخطوات القادمة</div>
+  <h1>من نموذج يعمل اليوم… إلى مرشد كل طالب فلسطيني</h1>
+  <div class="g2">
+    <div>
+      <div class="card" style="margin-bottom:14px"><h3>يوسف شعيبات <span style="font-size:15px;color:var(--muted);font-weight:500">Yousef Sheebat</span></h3><p>البيانات والاسترجاع والتقييم: جمع الوثائق الرسمية وتنظيفها، البحث الهجين، بوابة الرفض، أسئلة الاختبار وتحليل الأخطاء.</p></div>
+      <div class="card"><h3>حسين جرادات <span style="font-size:15px;color:var(--muted);font-weight:500">Hussein Jaradat</span></h3><p>المنتج والأعمال والعرض: الواجهة والصوت ولوحة الإدارة، السوق والتسعير والتسويق، العرض والفيديو.</p></div>
+    </div>
+    <div>
+      <table style="font-size:17px">
+        <tr><th>بعد المسابقة</th><th>الأثر</th></tr>
+        <tr><td>«خطة تخرجي»: الطالب يحدد ما أنهاه فيرى ما بقي</td><td>يحل سؤال «شو بقي لي؟»</td></tr>
+        <tr><td>بوت واتساب للمرشد</td><td>القناة الأكثر استخداماً</td></tr>
+        <tr><td>OCR عربي للوثائق الممسوحة</td><td>يغطي نظام البكالوريوس</td></tr>
+        <tr><td>Qwen3-Embedding عند توفر GPU</td><td>استرجاع أدق</td></tr>
+        <tr><td>Pilot رسمي في جامعة فلسطين الأهلية</td><td>أول دراسة حالة</td></tr>
+      </table>
+      <p style="font-size:19px;margin-top:18px;color:var(--brand-ink)"><b>طلبنا:</b> Pilot لفصل واحد مع عمادة القبول والتسجيل.</p>
+    </div>
+  </div>
+  <div class="src">الكود والنموذج والعرض والفيديو على GitHub · إفصاح AI: استخدمنا Claude في كتابة الكود والتوثيق، وقرارات التصميم والتقييم من الفريق.</div>
+  <div class="no">12</div>
+</section>
+
+<div class="nav">← → للتنقل · F للعرض بملء الشاشة · Ctrl+P للحفظ PDF</div>
+<script>
+// presentation mode: arrows to navigate, F for fullscreen
+const S = [...document.querySelectorAll('.s')]; let i = 0, pres = false;
+function show(){ S.forEach((s, k) => s.classList.toggle('on', k === i)); fit(); }
+function fit(){ if (!pres) return; const sc = Math.min(innerWidth / 1280, innerHeight / 720); S[i].style.transform = `scale(${sc})`; }
+addEventListener('keydown', e => {
+  if (e.key === 'f' || e.key === 'F'){ pres = !pres; document.body.classList.toggle('present', pres); if (pres){ document.documentElement.requestFullscreen?.(); show(); } else { S.forEach(s => { s.style.transform = ''; s.classList.remove('on'); }); document.exitFullscreen?.(); } }
+  if (!pres) return;
+  if (['ArrowLeft', 'PageDown', ' '].includes(e.key)) { i = Math.min(S.length - 1, i + 1); show(); }
+  if (['ArrowRight', 'PageUp'].includes(e.key)) { i = Math.max(0, i - 1); show(); }
+});
+addEventListener('resize', fit);
+</script>
+</body>
+</html>

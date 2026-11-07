@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}المرشد الأكاديمي · جامعة فلسطين الأهلية{% endblock %}</title>
+<link rel="icon" href="/static/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#7d1d34; --brand-2:#9a2843; --brand-ink:#5c1225;
+  --tint:#f6e9ec; --tint-2:#fbf4f5; --line:#ecdfe2; --line-2:#e3e3e6;
+  --gold:#b8891f; --text:#231a1d; --muted:#7a6d72; --bg:#fbfafa; --card:#fff;
+  --ok:#2f6b3a; --warn:#9a6a12;
+  --font:"IBM Plex Sans Arabic",system-ui,"Segoe UI",Tahoma,sans-serif;
+  --r:14px;
+  /* aliases used by admin/login pages */
+  --ink:var(--brand);--ink-2:var(--brand-2);--olive:var(--brand);--olive-soft:var(--tint);--sumac:var(--brand);--sumac-soft:var(--tint);--paper:var(--bg);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15px;line-height:1.65}
+a{color:var(--brand)}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brand-2);outline-offset:2px}
+svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.top{height:72px;display:flex;align-items:center;gap:22px;padding:0 28px;background:#fff;border-bottom:1px solid var(--line-2);position:sticky;top:0;z-index:20}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--brand)}
+.logo img{width:52px;height:52px;object-fit:contain}
+.logo b{font-size:23px;font-weight:700;letter-spacing:-.2px}
+.logo small{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-top:-3px}
+.top nav{margin-inline-start:auto;display:flex;align-items:center;gap:6px}
+.top nav a{color:var(--text);text-decoration:none;padding:8px 14px;border-radius:10px;font-weight:500}
+.top nav a:hover{background:var(--tint-2);color:var(--brand)}
+.sep{width:1px;height:26px;background:var(--brand);opacity:.35;margin:0 8px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--tint);color:var(--brand);display:grid;place-items:center;text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);background:#fff;padding:9px 16px;border-radius:12px;cursor:pointer;font-weight:500}
+.btn:hover{border-color:var(--brand-2);color:var(--brand)}
+.btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn.primary:hover{background:var(--brand-ink);color:#fff}
+.muted{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:760px){.top{padding:0 14px;gap:10px}.logo b{font-size:18px}.top nav a.hide-sm,.sep{display:none}}
+</style>
+{% block head %}{% endblock %}
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/"><img src="/static/logo.png" alt="شعار جامعة فلسطين الأهلية"><div><b>جامعة فلسطين الأهلية</b><small>المرشد الأكاديمي الذكي</small></div></a>
+  <nav>
+    <a class="hide-sm" href="https://www.paluniv.edu.ps" target="_blank" rel="noopener">موقع الجامعة</a>
+    <a class="hide-sm" href="/#about">عن المرشد</a>
+    {% if user and user['role'] == 'admin' %}<a href="/admin">لوحة الإدارة</a>{% endif %}
+    <span class="sep"></span>
+    {% if user %}<a href="/logout" title="تسجيل الخروج ({{ user['username'] }})">خروج</a>
+    <span class="avatar" title="{{ user['username'] }}"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+    {% else %}<a href="/login">تسجيل الدخول</a>
+    <a class="avatar" href="/login" aria-label="تسجيل الدخول"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></a>{% endif %}
+  </nav>
+</header>
+{% block body %}{% endblock %}
+</body>
+</html>

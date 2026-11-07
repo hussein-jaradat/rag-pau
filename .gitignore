@@ -1,0 +1,17 @@
+# secrets — never commit
+.env
+.env.*
+!.env.example
+# local runtime
+.venv/
+__pycache__/
+*.pyc
+storage/app.db
+storage/demo/
+eval/history.jsonl
+# scratch files
+answers.txt
+diag.txt
+models.txt
+out.txt
+eval_log.txt

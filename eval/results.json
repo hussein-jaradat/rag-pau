@@ -1,0 +1,293 @@
+{
+ "config": {
+  "embedder": "local:intfloat/multilingual-e5-small",
+  "llm": "groq:qwen/qwen3.8-27b",
+  "mode": "hybrid",
+  "k": 4,
+  "chunk": "900/150",
+  "n": 15,
+  "types": "dialect, direct, followup, multi_hop, not_in_docs, out_of_scope, table"
+ },
+ "retrieval": [
+  {
+   "mode": "hybrid",
+   "k": 4,
+   "hit@k": 0.917,
+   "precision@k": 0.479,
+   "mrr": 0.806,
+   "misses": [
+    "p08"
+   ]
+  }
+ ],
+ "summary": {
+  "answer_accuracy": 0.867,
+  "in_scope_accuracy": 0.833,
+  "refusal_accuracy_oos": 1.0,
+  "false_refusals": 2,
+  "citation_accuracy": 0.833,
+  "faithfulness": 0.835,
+  "latency_avg_s": 3.08,
+  "latency_p95_s": 8.71,
+  "cost_per_answer_usd": 0.00493
+ },
+ "rows": [
+  {
+   "id": "p01",
+   "type": "direct",
+   "q": "ما هو الحد الأعلى للعبء الدراسي في الفصل العادي لطالب البكالوريوس؟",
+   "answer": "الحد الأعلى للعبء الدراسي للطالب المنتظم في الفصل الدراسي العادي هو (18) ساعة معتمدة [3].\n\nومع ذلك، يجوز أن يتجاوز هذا الحد ليصل إلى (21) ساعة معتمدة في الحالات التالية [3]:\n1. إذا كان الفصل الدراسي هو فصل التخرج.\n2. إذا كان المعدل التراكمي للطالب 80% فأعلى.\n\n*ملاحظة: المصادر الأقدم [1][2] تذكر شروطاً مختلفة (مثل معدل فصلي 2.67 أو معدل 2.00)، ولكننا نعتمد النسخة الأحدث (2025) الواردة في المصدر [3]",
+   "refused": false,
+   "latency": 1.29,
+   "cost": 0.005582,
+   "cited": [
+    "admission_registration_regulations.html",
+    "admission_registration_regulations.html",
+    "admission_registration_regulations.html"
+   ],
+   "confidence": "high",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 0.8,
+   "judge": "lexical"
+  },
+  {
+   "id": "p02",
+   "type": "dialect",
+   "q": "كم ساعة بقدر أسجل بالفصل كحد أقصى؟",
+   "answer": "الحد الأقصى للعبء الدراسي (النصاب) في الفصل الدراسي العادي هو **18 ساعة معتمدة** [2].\n\nومع ذلك، يجوز أن يرتفع هذا الحد إلى **21 ساعة معتمدة** في الحالات التالية [2]:\n1. إذا كان الفصل الدراسي هو فصل التخرج.\n2. إذا كان المعدل التراكمي للطالب 80% فأعلى.\n\n*ملاحظة: المصادر الأقدم [1][4] تذكر شروطاً مختلفة (مثل معدل 2.67 أو 2.00)، ولكننا نعتمد النسخة الأحدث (2025) الواردة في المصدر [2] [2].*\n\nللحالات ال",
+   "refused": false,
+   "latency": 5.68,
+   "cost": 0.005194,
+   "cited": [
+    "admission_registration_regulations.html",
+    "admission_registration_regulations.html",
+    "admission_registration_regulations.html"
+   ],
+   "confidence": "medium",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 0.8,
+   "judge": "lexical"
+  },
+  {
+   "id": "p03",
+   "type": "direct",
+   "q": "ما الحد الأدنى للمعدل التراكمي للتخرج من البكالوريوس؟",
+   "answer": "الحد الأدنى للمعدل التراكمي للتخرج من درجة البكالوريوس هو 1.0 [2].\n\nللحالات الخاصة راجع دائرة القبول والتسجيل أو مرشدك الأكاديمي.",
+   "refused": false,
+   "latency": 8.71,
+   "cost": 0.004172,
+   "cited": [
+    "bachelor_requirements.html"
+   ],
+   "confidence": "high",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 1.0,
+   "judge": "lexical"
+  },
+  {
+   "id": "p04",
+   "type": "direct",
+   "q": "كم ساعة معتمدة متطلبات الجامعة؟",
+   "answer": "متطلبات الجامعة هي (27) ساعة معتمدة [1].\n\nللحالات الخاصة راجع دائرة القبول والتسجيل أو مرشدك الأكاديمي.",
+   "refused": false,
+   "latency": 4.28,
+   "cost": 0.004126,
+   "cited": [
+    "programs/3200.html"
+   ],
+   "confidence": "medium",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 1.0,
+   "judge": "lexical"
+  },
+  {
+   "id": "p05",
+   "type": "table",
+   "q": "كم ساعة معتمدة لمساق أساسيات الحاسوب والبرمجة؟",
+   "answer": "عذراً، لا تتوفر لدي معلومات عن هذا السؤال في المستندات المتاحة.\nيرجى مراجعة عمادة القبول والتسجيل (reg@paluniv.edu.ps - هاتف 022751566 تحويلة 142) أو مرشدك الأكاديمي.",
+   "refused": true,
+   "latency": 0.94,
+   "cost": 0.003136,
+   "cited": [],
+   "confidence": "high",
+   "refusal_ok": false,
+   "correct": false,
+   "citation_ok": false,
+   "faithfulness": 0.0,
+   "judge": "lexical"
+  },
+  {
+   "id": "p06",
+   "type": "direct",
+   "q": "كم عدد الساعات المعتمدة لبرنامج تكنولوجيا المعلومات؟",
+   "answer": "يبلغ عدد الساعات المعتمدة لبرنامج تكنولوجيا المعلومات 133 ساعة دراسية معتمدة (س.م) [1].\n\nللحالات الخاصة راجع دائرة القبول والتسجيل أو مرشدك الأكاديمي.",
+   "refused": false,
+   "latency": 0.95,
+   "cost": 0.003538,
+   "cited": [
+    "programs/3207.html"
+   ],
+   "confidence": "medium",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 1.0,
+   "judge": "lexical"
+  },
+  {
+   "id": "p07",
+   "type": "dialect",
+   "q": "شو لازم أجيب بمواد البرمجة الأولى عشان أكمل بتخصص تكنولوجيا المعلومات؟",
+   "answer": "للاستمرار في تخصص تكنولوجيا المعلومات، يجب عليك الحصول على علامة **67** (أي **70%**) كحد أدنى في كل من المساقات التالية [1]:\n\n1. أساسيات الحاسوب والبرمجة (410131) [1].\n2. مقدمة في تكنولوجيا المعلومات (410132) [1].\n3. برمجة حاسوب (410104) [1].\n\nبالإضافة إلى ذلك، يتوجب عليك الحصول على موافقة عمادة كلية الهندسة وتكنولوجيا المعلومات [1].\n\nللحالات الخاصة راجع دائرة القبول والتسجيل أو مرشدك الأكاديمي.",
+   "refused": false,
+   "latency": 1.25,
+   "cost": 0.005196,
+   "cited": [
+    "programs/3207.html"
+   ],
+   "confidence": "medium",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 1.0,
+   "judge": "lexical"
+  },
+  {
+   "id": "p08",
+   "type": "direct",
+   "q": "ما هي أقصى مدة لإنهاء درجة البكالوريوس؟",
+   "answer": "عذراً، لا تتوفر لدي معلومات عن هذا السؤال في المستندات المتاحة.\nيرجى مراجعة عمادة القبول والتسجيل (reg@paluniv.edu.ps - هاتف 022751566 تحويلة 142) أو مرشدك الأكاديمي.",
+   "refused": true,
+   "latency": 0.91,
+   "cost": 0.004256,
+   "cited": [],
+   "confidence": "high",
+   "refusal_ok": false,
+   "correct": false,
+   "citation_ok": false,
+   "faithfulness": 0.0,
+   "judge": "lexical"
+  },
+  {
+   "id": "p09",
+   "type": "dialect",
+   "q": "شو بصير إذا غبت أكثر من المسموح بالمادة؟",
+   "answer": "إذا تجاوزت الحد المسموح به للغياب في أي مادة تعليمية دون عذر مقبول، فسيتم تطبيق الإجراءات التالية [1][2]:\n\n1. **الحرم من الامتحان**: يُحرم الطالب من التقدم لامتحان نهاية الفصل لتلك المادة [1][2].\n2. **العلامة**: تُعطى للطالب علامة \"صفر جامعي\" (35%) في تلك المادة [1][2].\n3. **منع السحب**: لا يُسمح للطالب بسحب المادة بعد تجاوز حد الغياب [1].\n\n**الحد المسموح به للغياب:**\nيُسمح للطالب بالتغيب عن محاضر",
+   "refused": false,
+   "latency": 1.41,
+   "cost": 0.005864,
+   "cited": [
+    "admission_registration_regulations.html",
+    "admission_registration_regulations.html"
+   ],
+   "confidence": "high",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 1.0,
+   "judge": "lexical"
+  },
+  {
+   "id": "p10",
+   "type": "direct",
+   "q": "ما هي امتحانات المستوى التي يقدمها الطالب الجديد؟",
+   "answer": "يقدم الطالب الجديد بعد إعلان قبوله الامتحانات التالية [3]:\n1. امتحان تحديد المستوى في اللغة العربية [3].\n2. امتحان تحديد المستوى في اللغة الإنجليزية [3].\n3. امتحان مستوى في مهارات الحاسوب [3].\n\nللحالات الخاصة راجع دائرة القبول والتسجيل أو مرشدك الأكاديمي.",
+   "refused": false,
+   "latency": 4.5,
+   "cost": 0.004352,
+   "cited": [
+    "admission_registration_regulations.html"
+   ],
+   "confidence": "high",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 0.75,
+   "judge": "lexical"
+  },
+  {
+   "id": "p11",
+   "type": "multi_hop",
+   "q": "معدلي 2.1 وأنا بسنة ثالثة، كم ساعة أقدر أسجل؟",
+   "answer": "بناءً على المستندات المتاحة، لا تتوفر لدي معلومات تحدد الحد الأقصى لساعات التسجيل بناءً على المعدل التراكمي (2.1) بشكل مباشر، حيث أن اللوائح المذكورة تحدد فقط قيود التسجيل للطلبة **المنذرين أكاديمياً**.\n\nومع ذلك، يمكنني توضيح ما ورد في اللوائح:\n1.  إذا كان معدلك التراكمي (2.1) أعلى من حد الإنذار الأكاديمي (الذي يبدأ إذا تدنى المعدل عن 1) [1]، فلا تنطبق عليك قيود التسجيل الخاصة بالطلبة المنذرين.\n2.",
+   "refused": false,
+   "latency": 1.51,
+   "cost": 0.006822,
+   "cited": [
+    "admission_registration_regulations.html"
+   ],
+   "confidence": "medium",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 0.0,
+   "judge": "lexical"
+  },
+  {
+   "id": "p12",
+   "type": "followup",
+   "q": "وكم ساعة متطلبات الجامعة منها؟",
+   "answer": "تبلغ متطلبات الجامعة 27 ساعة معتمدة [1][2].\n\nللحالات الخاصة راجع دائرة القبول والتسجيل أو مرشدك الأكاديمي.",
+   "refused": false,
+   "latency": 6.23,
+   "cost": 0.00393,
+   "cited": [
+    "bachelor_requirements.html",
+    "admission_faq.html"
+   ],
+   "confidence": "medium",
+   "refusal_ok": true,
+   "correct": true,
+   "citation_ok": true,
+   "faithfulness": 1.0,
+   "judge": "lexical"
+  },
+  {
+   "id": "p13",
+   "type": "not_in_docs",
+   "q": "متى موعد امتحان الخوارزميات الأسبوع القادم؟",
+   "answer": "عذراً، لا تتوفر لدي معلومات عن هذا السؤال في المستندات المتاحة.\nيرجى مراجعة عمادة القبول والتسجيل (reg@paluniv.edu.ps - هاتف 022751566 تحويلة 142) أو مرشدك الأكاديمي.",
+   "refused": true,
+   "latency": 0.9,
+   "cost": 0.004874,
+   "cited": [],
+   "confidence": "high",
+   "correct": true,
+   "refusal_ok": true
+  },
+  {
+   "id": "p14",
+   "type": "out_of_scope",
+   "q": "اكتب لي قصيدة عن الجامعة",
+   "answer": "عذراً، لا تتوفر لدي معلومات عن هذا السؤال في المستندات المتاحة.\nيرجى مراجعة عمادة القبول والتسجيل (reg@paluniv.edu.ps - هاتف 022751566 تحويلة 142) أو مرشدك الأكاديمي.",
+   "refused": true,
+   "latency": 1.5,
+   "cost": 0.007118,
+   "cited": [],
+   "confidence": "high",
+   "correct": true,
+   "refusal_ok": true
+  },
+  {
+   "id": "p15",
+   "type": "out_of_scope",
+   "q": "من فاز بكأس العالم 2022؟",
+   "answer": "عذراً، لا تتوفر لدي معلومات عن هذا السؤال في المستندات المتاحة.\nيرجى مراجعة عمادة القبول والتسجيل (reg@paluniv.edu.ps - هاتف 022751566 تحويلة 142) أو مرشدك الأكاديمي.",
+   "refused": true,
+   "latency": 6.16,
+   "cost": 0.005732,
+   "cited": [],
+   "confidence": "high",
+   "correct": true,
+   "refusal_ok": true
+  }
+ ]
+}

@@ -1,0 +1,362 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+.layout{display:grid;grid-template-columns:300px minmax(0,1fr) 320px;gap:0;height:calc(100vh - 72px)}
+/* right rail */
+.rail{border-inline-end:1px solid var(--line-2);background:#fff;padding:22px 18px;display:flex;flex-direction:column;gap:6px;overflow:auto}
+.rail h2{display:flex;align-items:center;gap:10px;font-size:22px;color:var(--brand);margin:6px 6px 18px}
+.rail h2 svg{width:30px;height:30px;fill:var(--brand);stroke:none}
+.new{width:100%;height:54px;border-radius:12px;background:var(--brand);color:#fff;border:0;font-size:17px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;margin-bottom:12px}
+.new:hover{background:var(--brand-ink)}
+.nav-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;color:var(--text);text-decoration:none;font-size:16px;border:0;background:none;width:100%;cursor:pointer;text-align:start}
+.nav-item:hover{background:var(--tint-2)} .nav-item.on{background:var(--tint);color:var(--brand-ink);font-weight:600}
+.chat-list{display:flex;flex-direction:column;gap:2px;margin:2px 0 8px;padding-inline-start:30px}
+.chat-list button{border:0;background:none;text-align:start;padding:6px 10px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat-list button:hover,.chat-list button.on{background:var(--tint-2);color:var(--brand)}
+.help{margin-top:auto;background:var(--tint-2);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.help b{display:flex;align-items:center;gap:8px;color:var(--brand);font-size:16px;margin-bottom:6px}
+.help p{margin:0;font-size:14px;color:var(--muted)}
+/* center */
+.center{display:flex;flex-direction:column;min-width:0;background:var(--bg)}
+.scroll{flex:1;overflow:auto;padding:30px 36px 10px}
+.hero{text-align:center;margin:4px auto 22px;max-width:720px}
+.hero h1{font-size:36px;line-height:1.3;margin:0;color:var(--brand-ink);font-weight:700}
+.hero p{margin:6px 0 18px;font-size:18px;color:var(--muted)}
+.cats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.cat{display:flex;align-items:center;gap:10px;background:var(--tint);border:0;border-radius:999px;padding:11px 22px;font-size:16px;font-weight:600;color:var(--brand-ink);cursor:pointer}
+.cat:hover{background:#efd9de}
+.thread{max-width:820px;margin:0 auto}
+.row{display:flex;gap:12px;margin:18px 0;align-items:flex-start}
+.row.me{justify-content:flex-start}
+.row .who{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex:none}
+.row.me .who{background:var(--tint);color:var(--brand)}
+.row.bot .who{background:var(--brand);color:#fff}
+.row .col{min-width:0;display:flex;flex-direction:column;gap:4px;max-width:calc(100% - 60px)}
+.row .time{font-size:12px;color:var(--muted)}
+.q-bubble{background:var(--tint);border-radius:16px;padding:12px 20px;font-size:17px;font-weight:500}
+.a-card{background:#fff;border:1px solid var(--line-2);border-radius:16px;padding:18px 22px;box-shadow:0 1px 2px rgba(92,18,37,.04)}
+.a-card.refused{border-color:#ead8b8;background:#fffcf6}
+.a-text{font-size:17px;line-height:1.95}
+.a-text ol,.a-text ul{margin:6px 0;padding-inline-start:24px}
+.a-text li{margin:2px 0}
+.cite{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:6px;background:var(--tint);color:var(--brand);font-size:12px;font-weight:700;cursor:pointer;vertical-align:3px;margin:0 2px}
+.cite:hover{background:var(--brand);color:#fff}
+.srcs{margin-top:14px;background:var(--tint-2);border-radius:14px;padding:14px}
+.srcs h4{display:flex;align-items:center;gap:8px;margin:0 0 10px;color:var(--brand);font-size:16px}
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.src{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.src .t{display:flex;align-items:flex-start;gap:8px;font-weight:700;font-size:15px;line-height:1.4}
+.src .t .n{color:var(--brand);font-size:12px;background:var(--tint);border-radius:6px;padding:1px 6px;flex:none}
+.src .s{font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.src .acts{display:flex;justify-content:space-between;align-items:center;margin-top:2px}
+.pill{background:var(--tint);color:var(--brand-ink);border:0;border-radius:8px;padding:5px 14px;font-size:13px;font-weight:600;cursor:pointer}
+.pill:hover{background:var(--brand);color:#fff}
+.ext{color:var(--muted)} .ext:hover{color:var(--brand)}
+.tools{display:flex;align-items:center;gap:4px;margin-top:10px;color:var(--muted)}
+.tool{border:0;background:none;padding:6px;border-radius:8px;cursor:pointer;color:var(--muted);display:grid;place-items:center}
+.tool:hover,.tool.on{background:var(--tint-2);color:var(--brand)}
+.badge{margin-inline-start:auto;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px}
+.badge.high{background:#e6f1e7;color:var(--ok)} .badge.medium{background:#fbf1dc;color:var(--warn)}
+.badge.low,.badge.ref{background:var(--tint);color:var(--brand)}
+details.how{margin-top:8px;font-size:13px;color:var(--muted)} details.how summary{cursor:pointer}
+details.how pre{white-space:pre-wrap;background:var(--tint-2);padding:10px;border-radius:10px;font-size:12px;direction:ltr;text-align:left;margin:6px 0 0}
+.typing{display:inline-flex;gap:5px;align-items:center}.typing i{width:8px;height:8px;border-radius:50%;background:var(--brand-2);animation:b 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,100%{opacity:.2}50%{opacity:1}}
+/* composer */
+.composer{padding:12px 36px 14px}
+.box{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #e3c9cf;border-radius:16px;padding:8px 8px 8px 8px}
+.box:focus-within{border-color:var(--brand-2);box-shadow:0 0 0 4px rgba(125,29,52,.08)}
+.box textarea{flex:1;border:0;outline:0;resize:none;padding:10px 12px;font-size:16px;max-height:140px;background:transparent}
+.ibtn{width:52px;height:48px;border-radius:12px;border:0;display:grid;place-items:center;cursor:pointer}
+.send{background:var(--brand);color:#fff}.send:hover{background:var(--brand-ink)}
+.mic{background:var(--tint);color:var(--brand)}.mic:hover{background:#efd9de}
+.mic.rec{background:var(--brand);color:#fff;animation:pulse 1.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(125,29,52,.45)}100%{box-shadow:0 0 0 14px rgba(125,29,52,0)}}
+.under{max-width:820px;margin:8px auto 0;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
+.switch input{appearance:none;width:38px;height:22px;border-radius:999px;background:#ddd;position:relative;cursor:pointer;transition:.2s}
+.switch input::after{content:"";position:absolute;top:3px;right:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
+.switch input:checked{background:var(--brand)} .switch input:checked::after{right:19px}
+.listening{max-width:820px;margin:0 auto 8px;display:none;align-items:center;gap:10px;color:var(--brand);font-weight:600}
+.listening.on{display:flex}
+.wave{display:flex;gap:3px;align-items:center;height:20px}.wave i{width:3px;background:var(--brand);border-radius:2px;animation:w .9s infinite ease-in-out}
+.wave i:nth-child(1){height:6px}.wave i:nth-child(2){height:14px;animation-delay:.1s}.wave i:nth-child(3){height:20px;animation-delay:.2s}.wave i:nth-child(4){height:12px;animation-delay:.3s}.wave i:nth-child(5){height:7px;animation-delay:.4s}
+@keyframes w{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+/* left rail */
+.aside{border-inline-start:1px solid var(--line-2);background:var(--bg);padding:22px 16px;overflow:auto;display:flex;flex-direction:column;gap:18px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;flex-shrink:0}
+.panel h3{display:flex;align-items:center;gap:10px;margin:0;padding:16px 18px;background:var(--tint);color:var(--brand-ink);font-size:18px}
+.panel .body{padding:14px;display:flex;flex-direction:column;gap:10px}
+.link{display:flex;align-items:center;gap:12px;border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--text);font-weight:500;background:#fff;cursor:pointer;text-align:start;width:100%}
+.link:hover{border-color:var(--brand-2);color:var(--brand)}
+.link .ico{color:var(--brand)} .link .end{margin-inline-start:auto;color:var(--muted)}
+.stat{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat div{background:var(--tint-2);border-radius:10px;padding:10px;text-align:center}
+.stat b{display:block;font-size:20px;color:var(--brand)} .stat span{font-size:12px;color:var(--muted)}
+/* source drawer */
+.scrim{position:fixed;inset:0;background:rgba(35,26,29,.35);display:none;z-index:40}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(520px,100%);background:#fff;z-index:41;transform:translateX(-100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.15)}
+.drawer.open{transform:none} .scrim.open{display:block}
+.drawer header{display:flex;align-items:flex-start;gap:10px;padding:20px 22px;border-bottom:1px solid var(--line-2)}
+.drawer header h3{margin:0;font-size:19px;color:var(--brand-ink);line-height:1.4}
+.drawer header p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.drawer .doc{flex:1;overflow:auto;padding:22px;background:#f4f1f2}
+.page{background:#fff;border-top:4px solid var(--brand);border-radius:4px;padding:26px 26px 22px;box-shadow:0 8px 24px -14px rgba(92,18,37,.35);font-size:16px;line-height:2;white-space:pre-wrap}
+.page mark{background:#f7e3a1;padding:0 2px;border-radius:2px}
+.drawer footer{padding:14px 22px;border-top:1px solid var(--line-2);display:flex;gap:10px}
+@media (max-width:1250px){.layout{grid-template-columns:270px minmax(0,1fr)}.aside{display:none}}
+@media (max-width:860px){.layout{grid-template-columns:1fr;height:auto;min-height:calc(100vh - 72px)}.rail{display:none}.scroll{padding:18px 14px}.composer{padding:10px}.hero h1{font-size:26px}}
+</style>
+{% endblock %}
+{% block body %}
+{% set I = {
+ 'cap':'<svg class="i" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5"/></svg>',
+ 'chat':'<svg class="i" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z"/></svg>',
+ 'book':'<svg class="i" viewBox="0 0 24 24"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2z"/><path d="M22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg>',
+ 'bank':'<svg class="i" viewBox="0 0 24 24"><path d="M3 10h18L12 4z"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg>',
+ 'doc':'<svg class="i" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg>',
+ 'layers':'<svg class="i" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg>',
+ 'scale':'<svg class="i" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></svg>',
+ 'link':'<svg class="i" viewBox="0 0 24 24"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>',
+ 'out':'<svg class="i" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+ 'lap':'<svg class="i" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1"/><path d="M2 19h20"/></svg>',
+ 'q':'<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.8 1c0 1.7-2.3 2-2.3 3.5M12 17h.01"/></svg>',
+ 'mic':'<svg class="i" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>',
+ 'send':'<svg class="i" viewBox="0 0 24 24" style="transform:scaleX(-1)"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>',
+ 'chev':'<svg class="i" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>',
+ 'user':'<svg class="i" viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21a8.5 8.5 0 0 1 17 0z"/></svg>'
+} %}
+<div class="layout">
+  <aside class="rail">
+    <h2><svg viewBox="0 0 24 24"><path d="M23 9.5 12 4 1 9.5 12 15l9-4.5V17h2zM5 13.2v3.6C7.2 19 9.6 20 12 20s4.8-1 7-3.2v-3.6L12 17z"/></svg>المرشد الأكاديمي</h2>
+    <button class="new" onclick="newChat()"><span style="font-size:22px;line-height:1">+</span> محادثة جديدة</button>
+    <button class="nav-item on">{{ I.chat|safe }} المحادثات</button>
+    <div class="chat-list" id="chats">{% if not user %}<span class="muted" style="font-size:13px;padding:4px 10px">سجّل الدخول لحفظ محادثاتك.</span>{% endif %}</div>
+    <button class="nav-item" onclick="showSources()">{{ I.book|safe }} المصادر</button>
+    <a class="nav-item" href="https://www.paluniv.edu.ps/?page_id=14224" target="_blank" rel="noopener">{{ I.bank|safe }} خدمات الجامعة</a>
+    <div class="help" id="about">
+      <b>{{ I.q|safe }} تحتاج إلى مساعدة؟</b>
+      <p>اسأل المرشد عن القبول والتسجيل، التخصصات والخطط الدراسية، الأنظمة والتعليمات. للحالات الخاصة: عمادة القبول والتسجيل، تحويلة 142.</p>
+    </div>
+  </aside>
+
+  <main class="center">
+    <div class="scroll" id="scroll">
+      <div class="hero" id="hero">
+        <h1>مرحباً بك في مرشدك الأكاديمي</h1>
+        <p>إجابات واضحة من مصادر الجامعة الرسمية، بلهجتك وبصوتك.</p>
+        <div class="cats">
+          <button class="cat" onclick="ask('شو شروط القبول والتسجيل للطلبة الجدد؟')">{{ I.doc|safe }} القبول والتسجيل</button>
+          <button class="cat" onclick="ask('ما هي التخصصات المتوفرة في كلية الهندسة وتكنولوجيا المعلومات؟')">{{ I.layers|safe }} التخصصات</button>
+          <button class="cat" onclick="ask('كم ساعة معتمدة بقدر أسجل بالفصل كحد أقصى؟')">{{ I.scale|safe }} الأنظمة والتعليمات</button>
+        </div>
+      </div>
+      <div class="thread" id="thread"></div>
+    </div>
+
+    <div class="composer">
+      <div class="listening" id="listening"><span class="wave"><i></i><i></i><i></i><i></i><i></i></span> أستمع إليك… تكلّم بلهجتك</div>
+      <form class="box" onsubmit="event.preventDefault();ask()">
+        <textarea id="q" rows="1" placeholder="اكتب سؤالك الأكاديمي هنا…" aria-label="سؤالك"></textarea>
+        <button type="button" class="ibtn mic" id="mic" title="اسأل بصوتك" aria-label="اسأل بصوتك">{{ I.mic|safe }}</button>
+        <button class="ibtn send" aria-label="إرسال">{{ I.send|safe }}</button>
+      </form>
+      <div class="under">
+        <span>المرشد يساعدك في الوصول للمعلومة، والقرارات الرسمية لدى الجامعة.</span>
+        <label class="switch"><input type="checkbox" id="speakToggle"> الرد الصوتي</label>
+      </div>
+    </div>
+  </main>
+
+  <aside class="aside">
+    <section class="panel">
+      <h3>{{ I.link|safe }} روابط جامعية مفيدة</h3>
+      <div class="body">
+        <a class="link" href="https://portal.paluniv.edu.ps/" target="_blank" rel="noopener"><span class="ico">{{ I.cap|safe }}</span>البوابة الأكاديمية<span class="end">{{ I.out|safe }}</span></a>
+        <a class="link" href="https://eclass.paluniv.edu.ps" target="_blank" rel="noopener"><span class="ico">{{ I.lap|safe }}</span>التعليم الإلكتروني<span class="end">{{ I.out|safe }}</span></a>
+        <a class="link" href="https://www.paluniv.edu.ps/?page_id=136966" target="_blank" rel="noopener"><span class="ico">{{ I.doc|safe }}</span>الأنظمة واللوائح<span class="end">{{ I.out|safe }}</span></a>
+      </div>
+    </section>
+    <section class="panel">
+      <h3>{{ I.chat|safe }} جرّب أن تسأل</h3>
+      <div class="body">
+        {% for s in profile.samples %}<button class="link" onclick="ask(this.dataset.q)" data-q="{{ s }}">{{ s }}<span class="end">{{ I.chev|safe }}</span></button>{% endfor %}
+        <button class="link" onclick="ask(this.dataset.q)" data-q="رسبت بمادة إجبارية، هل بتأثر على تسجيلي للمادة اللي بعدها؟">رسبت بمادة، هل بتأثر تسجيلي؟<span class="end">{{ I.chev|safe }}</span></button>
+      </div>
+    </section>
+    <section class="panel">
+      <h3>{{ I.book|safe }} قاعدة المعرفة</h3>
+      <div class="body"><div class="stat">
+        <div><b>{{ info.get('sources', [])|length }}</b><span>وثيقة رسمية</span></div>
+        <div><b>{{ info.get('chunks', 0) }}</b><span>مقطعاً مفهرساً</span></div>
+      </div></div>
+    </section>
+  </aside>
+</div>
+
+<div class="scrim" id="scrim" onclick="closeDrawer()"></div>
+<aside class="drawer" id="drawer" aria-label="عرض المصدر">
+  <header><span style="color:var(--brand)">{{ I.doc|safe }}</span><div style="flex:1"><h3 id="dTitle"></h3><p id="dLoc"></p></div>
+    <button class="tool" onclick="closeDrawer()" aria-label="إغلاق"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
+  <div class="doc"><div class="page" id="dText"></div></div>
+  <footer><a class="btn primary" id="dLink" target="_blank" rel="noopener">{{ I.out|safe }} فتح الوثيقة الرسمية</a><button class="btn" onclick="closeDrawer()">إغلاق</button></footer>
+</aside>
+
+<script>
+const ICON = {
+  user: `{{ I.user|safe }}`, cap: `{{ I.cap|safe }}`, book: `{{ I.book|safe }}`, doc: `{{ I.doc|safe }}`, layers: `{{ I.layers|safe }}`, out: `{{ I.out|safe }}`,
+  copy: '<svg class="i" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>',
+  up: '<svg class="i" viewBox="0 0 24 24"><path d="M7 10v11H4V10zM7 10l4-7a2 2 0 0 1 2 2v4h6a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 17.6 21H7"/></svg>',
+  down: '<svg class="i" viewBox="0 0 24 24" style="transform:scaleY(-1)"><path d="M7 10v11H4V10zM7 10l4-7a2 2 0 0 1 2 2v4h6a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 17.6 21H7"/></svg>',
+  speak: '<svg class="i" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+  stop: '<svg class="i" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg>'
+};
+let chatId = null, history = [];
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const now = () => new Date().toLocaleTimeString('ar-PS', {hour:'numeric', minute:'2-digit'});
+
+function md(t){
+  let h = esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/(^|\s)\*(\S[^*]*?)\*/g, '$1<i>$2</i>');
+  const out = []; let list = null;
+  for (const l of h.split('\n')){
+    const ol = l.match(/^\s*\d+[\.\)]\s+(.*)/), ul = l.match(/^\s*[\*\-•]\s+(.*)/);
+    if (ol || ul){ const tag = ol ? 'ol' : 'ul';
+      if (list !== tag){ if (list) out.push(`</${list}>`); out.push(`<${tag}>`); list = tag; }
+      out.push(`<li>${(ol || ul)[1]}</li>`);
+    } else { if (list){ out.push(`</${list}>`); list = null; } if (l.trim()) out.push(`<div>${l}</div>`); }
+  }
+  if (list) out.push(`</${list}>`);
+  return out.join('').replace(/\[(\d+)\]/g, '<span class="cite" data-n="$1" title="عرض المصدر">$1</span>');
+}
+const plain = t => t.replace(/\[\d+\]/g, '').replace(/[*#|>_`]/g, '').replace(/https?:\S+/g, '').replace(/\s+/g, ' ').trim();
+
+function scrollDown(){ const s = $('#scroll'); s.scrollTop = s.scrollHeight; }
+function addMe(q, t){
+  $('#hero').style.display = 'none';
+  $('#thread').insertAdjacentHTML('beforeend', `<div class="row me"><div class="who">${ICON.user}</div><div class="col"><div class="q-bubble">${esc(q)}</div><span class="time">${t || now()}</span></div></div>`);
+  scrollDown();
+}
+function addTyping(){
+  const el = document.createElement('div'); el.className = 'row bot';
+  el.innerHTML = `<div class="who">${ICON.cap}</div><div class="col" style="flex:1"><div class="a-card"><span class="typing"><i></i><i></i><i></i></span> <span class="muted" style="font-size:14px;margin-inline-start:6px">أبحث في وثائق الجامعة…</span></div></div>`;
+  $('#thread').append(el); scrollDown(); return el;
+}
+
+// ---- source drawer
+function openSource(c, q){
+  $('#dTitle').textContent = c.title || c.source;
+  $('#dLoc').textContent = [c.section, c.page ? 'صفحة ' + c.page : '', c.date ? 'إصدار ' + c.date : ''].filter(Boolean).join(' · ');
+  let txt = esc(c.snippet);
+  for (const w of (q || '').split(/\s+/).filter(w => w.length > 3).slice(0, 8)){
+    try { txt = txt.replace(new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), '<mark>$&</mark>'); } catch(e){}
+  }
+  $('#dText').innerHTML = txt;
+  const link = $('#dLink'); if (c.url){ link.href = c.url; link.style.display = ''; } else link.style.display = 'none';
+  $('#drawer').classList.add('open'); $('#scrim').classList.add('open');
+}
+function closeDrawer(){ $('#drawer').classList.remove('open'); $('#scrim').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+function srcIcon(c){ return /\.pdf$/i.test(c.source) ? ICON.doc : /programs\//.test(c.source) ? ICON.layers : ICON.book; }
+function shortTitle(c){ return (c.title || c.source).replace(/\s*-\s*جامعة فلسطين الأهلية.*/, ''); }
+
+function addBot(a, el){
+  const badge = a.refused ? '<span class="badge ref">لا تتوفر المعلومة</span>'
+    : ({high:'<span class="badge high">موثّقة بالمصدر</span>', medium:'<span class="badge medium">ثقة متوسطة</span>', low:'<span class="badge low">تحقّق من المصدر</span>'}[a.confidence] || '');
+  const cits = a.citations || [];
+  const srcs = cits.length && !a.refused ? `<div class="srcs"><h4>${ICON.book} المصادر</h4><div class="src-grid">${cits.map((c, i) =>
+      `<div class="src"><div class="t"><span style="color:var(--brand)">${srcIcon(c)}</span><span style="flex:1">${esc(shortTitle(c))}</span><span class="n">${c.n}</span></div>
+       <div class="s">${esc(c.section || 'وثيقة رسمية')}</div>
+       <div class="acts"><button class="pill" data-i="${i}">عرض المصدر</button>${c.url ? `<a class="ext" href="${c.url}" target="_blank" rel="noopener" title="فتح في موقع الجامعة">${ICON.out}</a>` : ''}</div></div>`).join('')}</div></div>` : '';
+  const how = `القصد المفهوم: ${a.standalone_query || ''}\nزمن المراحل: ${JSON.stringify(Object.fromEntries(Object.entries(a.timings || {}).filter(([k]) => k !== 'gate')))}\nبوابة الرفض: ${JSON.stringify((a.timings || {}).gate || {})}\nالمقاطع المسترجعة: ${(a.retrieved || []).map(r => r.n + ') ' + shortTitle(r) + ' — ' + (r.section || '')).join(' | ')}`;
+  el.innerHTML = `<div class="who">${ICON.cap}</div><div class="col" style="flex:1">
+    <div class="a-card ${a.refused ? 'refused' : ''}"><div class="a-text">${md(a.answer)}</div>${srcs}
+      <div class="tools">
+        <button class="tool speak" title="استمع للإجابة" aria-label="استمع للإجابة">${ICON.speak}</button>
+        <button class="tool copy" title="نسخ" aria-label="نسخ">${ICON.copy}</button>
+        <button class="tool fb" data-up="0" title="غير مفيدة" aria-label="غير مفيدة">${ICON.down}</button>
+        <button class="tool fb" data-up="1" title="مفيدة" aria-label="مفيدة">${ICON.up}</button>
+        ${badge}
+      </div>
+      ${a.timings && a.timings.total ? `<details class="how"><summary>كيف وصل المرشد لهذه الإجابة؟ (${a.timings.total} ث)</summary><pre>${esc(how)}</pre></details>` : ''}
+    </div><span class="time">${now()}</span></div>`;
+  el.querySelectorAll('.pill').forEach(b => b.onclick = () => openSource(cits[+b.dataset.i], a.question));
+  el.querySelectorAll('.cite').forEach(c => c.onclick = () => { const x = cits.find(k => k.n == c.dataset.n); if (x) openSource(x, a.question); });
+  el.querySelector('.copy').onclick = e => { navigator.clipboard?.writeText(plain(a.answer)); e.currentTarget.classList.add('on'); };
+  el.querySelectorAll('.fb').forEach(b => b.onclick = () => {
+    if (a.log_id) fetch('/api/feedback', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({log_id: a.log_id, up: b.dataset.up === '1'})});
+    el.querySelectorAll('.fb').forEach(x => x.classList.remove('on')); b.classList.add('on');
+  });
+  const sp = el.querySelector('.speak');
+  sp.onclick = () => speaking === sp ? stopSpeak() : speak(a.answer, sp);
+  if ($('#speakToggle').checked || a.voice) speak(a.answer, sp);
+}
+
+async function ask(text, voice){
+  const q = (text || $('#q').value).trim(); if (!q) return;
+  $('#q').value = ''; autosize(); stopSpeak(); addMe(q); const el = addTyping();
+  try {
+    const r = await fetch('/api/ask', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({question: q, chat_id: chatId, history})});
+    const a = await r.json(); if (!r.ok) throw new Error(a.error || 'error');
+    a.voice = voice; chatId = a.chat_id || chatId;
+    history.push({role:'user', content:q}, {role:'assistant', content:a.answer}); history = history.slice(-8);
+    addBot(a, el); loadChats();
+  } catch(e){
+    el.innerHTML = `<div class="who">${ICON.cap}</div><div class="col" style="flex:1"><div class="a-card refused">تعذّر الحصول على إجابة الآن (${esc(e.message)}). أعد المحاولة بعد لحظات.</div></div>`;
+  }
+  scrollDown();
+}
+
+// ---- voice: speech-to-text (ask) + text-to-speech (answer), Arabic, in the browser
+let speaking = null, arVoice = null;
+function pickVoice(){ const v = speechSynthesis.getVoices(); arVoice = v.find(x => /ar[-_](PS|JO|SA|EG|AE)/i.test(x.lang) && /google|natural|online/i.test(x.name)) || v.find(x => /^ar/i.test(x.lang)) || null; }
+if ('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function speak(text, btn){
+  if (!('speechSynthesis' in window)) return;
+  stopSpeak();
+  const body = plain(text.split(/\n\s*\n(?=⚠️|للحالات الخاصة)/)[0]);
+  const parts = body.match(/[^.!؟?\n]{1,220}[.!؟?]?/g) || [body];
+  parts.forEach((p, i) => { const u = new SpeechSynthesisUtterance(p); u.lang = arVoice ? arVoice.lang : 'ar-SA'; if (arVoice) u.voice = arVoice; u.rate = 1;
+    if (i === parts.length - 1) u.onend = () => { if (speaking === btn) stopSpeak(); }; speechSynthesis.speak(u); });
+  speaking = btn; if (btn){ btn.classList.add('on'); btn.innerHTML = ICON.stop; }
+}
+function stopSpeak(){ if ('speechSynthesis' in window) speechSynthesis.cancel(); if (speaking){ speaking.classList.remove('on'); speaking.innerHTML = ICON.speak; } speaking = null; }
+
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SR){
+  const rec = new SR(); rec.lang = 'ar-PS'; rec.interimResults = true; rec.continuous = false; let finalText = '';
+  $('#mic').onclick = () => { if ($('#mic').classList.contains('rec')){ rec.stop(); return; } stopSpeak(); finalText = ''; rec.start(); };
+  rec.onstart = () => { $('#mic').classList.add('rec'); $('#listening').classList.add('on'); };
+  rec.onresult = e => { let t = ''; for (const r of e.results){ t += r[0].transcript; if (r.isFinal) finalText = t; } $('#q').value = t; };
+  rec.onend = () => { $('#mic').classList.remove('rec'); $('#listening').classList.remove('on'); const t = (finalText || $('#q').value).trim(); if (t) ask(t, true); };
+  rec.onerror = e => { $('#listening').classList.remove('on'); if (e.error === 'not-allowed') alert('اسمح للمتصفح باستخدام الميكروفون لتسأل بصوتك.'); };
+} else { $('#mic').title = 'الإدخال الصوتي يتطلب Chrome أو Edge'; $('#mic').onclick = () => alert('الإدخال الصوتي يعمل في متصفح Chrome أو Edge.'); }
+
+// ---- chats
+function newChat(){ chatId = null; history = []; stopSpeak(); $('#thread').innerHTML = ''; $('#hero').style.display = ''; loadChats(); }
+async function loadChats(){
+  {% if user %}const list = await (await fetch('/api/chats')).json();
+  $('#chats').innerHTML = list.slice(0, 12).map(c => `<button class="${c.id === chatId ? 'on' : ''}" onclick="openChat(${c.id})" title="${esc(c.title)}">${esc(c.title)}</button>`).join('');{% endif %}
+}
+async function openChat(id){
+  const msgs = await (await fetch('/api/chats/' + id)).json(); chatId = id; history = []; stopSpeak();
+  $('#thread').innerHTML = '';
+  for (const m of msgs){
+    if (m.role === 'user') addMe(m.content, ' ');
+    else { const el = document.createElement('div'); el.className = 'row bot'; $('#thread').append(el);
+      addBot({answer: m.content, citations: m.meta.citations || [], confidence: m.meta.confidence, refused: m.meta.refused, question: ''}, el); }
+    history.push({role: m.role, content: m.content});
+  }
+  loadChats(); scrollDown();
+}
+function showSources(){ ask('ما هي الوثائق والمصادر الرسمية التي تعتمد عليها في إجاباتك؟'); }
+function autosize(){ const t = $('#q'); t.style.height = 'auto'; t.style.height = Math.min(t.scrollHeight, 140) + 'px'; }
+$('#q').addEventListener('input', autosize);
+$('#q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); ask(); } });
+try { $('#speakToggle').checked = localStorage.getItem('speak') === '1'; } catch(e){}
+$('#speakToggle').onchange = e => { try { localStorage.setItem('speak', e.target.checked ? '1' : '0'); } catch(_){} if (!e.target.checked) stopSpeak(); };
+loadChats();
+</script>
+{% endblock %}

@@ -1,0 +1,207 @@
+[
+ {
+  "id": "p01",
+  "type": "direct",
+  "q": "ما هو الحد الأعلى للعبء الدراسي في الفصل العادي لطالب البكالوريوس؟",
+  "gold_sources": [
+   "admission_registration_regulations.html",
+   "student_guide_2024_2025.pdf",
+   "bachelor_degree_regulation.pdf"
+  ],
+  "gold_contains": [
+   "18"
+  ],
+  "must": [
+   "18"
+  ]
+ },
+ {
+  "id": "p02",
+  "type": "dialect",
+  "q": "كم ساعة بقدر أسجل بالفصل كحد أقصى؟",
+  "gold_sources": [
+   "admission_registration_regulations.html",
+   "student_guide_2024_2025.pdf",
+   "bachelor_degree_regulation.pdf"
+  ],
+  "gold_contains": [
+   "18"
+  ],
+  "must": [
+   "18"
+  ]
+ },
+ {
+  "id": "p03",
+  "type": "direct",
+  "q": "ما الحد الأدنى للمعدل التراكمي للتخرج من البكالوريوس؟",
+  "gold_sources": [
+   "bachelor_requirements.html",
+   "admission_registration_regulations.html",
+   "student_guide_2024_2025.pdf",
+   "bachelor_degree_regulation.pdf"
+  ],
+  "gold_contains": [
+   "معدل"
+  ],
+  "must": []
+ },
+ {
+  "id": "p04",
+  "type": "direct",
+  "q": "كم ساعة معتمدة متطلبات الجامعة؟",
+  "gold_sources": [
+   "*"
+  ],
+  "gold_contains": [
+   "27"
+  ],
+  "must": [
+   "27"
+  ]
+ },
+ {
+  "id": "p05",
+  "type": "table",
+  "q": "كم ساعة معتمدة لمساق أساسيات الحاسوب والبرمجة؟",
+  "gold_sources": [
+   "*"
+  ],
+  "gold_contains": [
+   "أساسيات الحاسوب"
+  ],
+  "must": [
+   "3"
+  ]
+ },
+ {
+  "id": "p06",
+  "type": "direct",
+  "q": "كم عدد الساعات المعتمدة لبرنامج تكنولوجيا المعلومات؟",
+  "gold_sources": [
+   "programs/3207.html"
+  ],
+  "gold_contains": [
+   "133"
+  ],
+  "must": [
+   "133"
+  ]
+ },
+ {
+  "id": "p07",
+  "type": "dialect",
+  "q": "شو لازم أجيب بمواد البرمجة الأولى عشان أكمل بتخصص تكنولوجيا المعلومات؟",
+  "gold_sources": [
+   "programs/3207.html"
+  ],
+  "gold_contains": [
+   "70"
+  ],
+  "must": [
+   "70"
+  ]
+ },
+ {
+  "id": "p08",
+  "type": "direct",
+  "q": "ما هي أقصى مدة لإنهاء درجة البكالوريوس؟",
+  "gold_sources": [
+   "admission_registration_regulations.html",
+   "student_guide_2024_2025.pdf",
+   "bachelor_degree_regulation.pdf"
+  ],
+  "gold_contains": [
+   "سنوات"
+  ],
+  "must": []
+ },
+ {
+  "id": "p09",
+  "type": "dialect",
+  "q": "شو بصير إذا غبت أكثر من المسموح بالمادة؟",
+  "gold_sources": [
+   "admission_registration_regulations.html",
+   "student_guide_2024_2025.pdf",
+   "bachelor_degree_regulation.pdf"
+  ],
+  "gold_contains": [
+   "غياب"
+  ],
+  "must": []
+ },
+ {
+  "id": "p10",
+  "type": "direct",
+  "q": "ما هي امتحانات المستوى التي يقدمها الطالب الجديد؟",
+  "gold_sources": [
+   "admission_registration_regulations.html",
+   "new_students_enrollment.html",
+   "new_students_admission.html",
+   "student_guide_2024_2025.pdf"
+  ],
+  "gold_contains": [
+   "مستوى"
+  ],
+  "must": []
+ },
+ {
+  "id": "p11",
+  "type": "multi_hop",
+  "q": "معدلي 2.1 وأنا بسنة ثالثة، كم ساعة أقدر أسجل؟",
+  "gold_sources": [
+   "admission_registration_regulations.html",
+   "student_guide_2024_2025.pdf",
+   "bachelor_degree_regulation.pdf"
+  ],
+  "gold_contains": [
+   "ساع"
+  ],
+  "must": []
+ },
+ {
+  "id": "p12",
+  "type": "followup",
+  "history": [
+   {
+    "role": "user",
+    "content": "ما هي شروط التخرج من البكالوريوس؟"
+   },
+   {
+    "role": "assistant",
+    "content": "يشترط إتمام متطلبات الجامعة والكلية والتخصص بمعدل تراكمي محدد."
+   }
+  ],
+  "q": "وكم ساعة متطلبات الجامعة منها؟",
+  "gold_sources": [
+   "*"
+  ],
+  "gold_contains": [
+   "27"
+  ],
+  "must": [
+   "27"
+  ]
+ },
+ {
+  "id": "p13",
+  "type": "not_in_docs",
+  "q": "متى موعد امتحان الخوارزميات الأسبوع القادم؟",
+  "gold_sources": [],
+  "refuse": true
+ },
+ {
+  "id": "p14",
+  "type": "out_of_scope",
+  "q": "اكتب لي قصيدة عن الجامعة",
+  "gold_sources": [],
+  "refuse": true
+ },
+ {
+  "id": "p15",
+  "type": "out_of_scope",
+  "q": "من فاز بكأس العالم 2022؟",
+  "gold_sources": [],
+  "refuse": true
+ }
+]

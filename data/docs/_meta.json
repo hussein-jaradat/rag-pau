@@ -1,0 +1,381 @@
+{
+ "student_regulations_2024.md": {
+  "title": "لائحة الدراسة للبكالوريوس 2024",
+  "date": "2024"
+ },
+ "student_regulations_2022_old.md": {
+  "title": "لائحة الدراسة للبكالوريوس 2022 (ملغاة)",
+  "date": "2022"
+ },
+ "cs_courses.csv": {
+  "title": "الخطة الدراسية - علم الحاسوب",
+  "date": "2024"
+ },
+ "registration_guide_en.pdf": {
+  "title": "Registration Guide (English)",
+  "date": "2024"
+ },
+ "student_guide_2024_2025.pdf": {
+  "title": "دليل الطالب 2024-2025",
+  "date": "2024",
+  "url": "https://paluniv.edu.ps/wp-content/uploads/2024/05/%D8%AF%D9%84%D9%8A%D9%84-%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8-2024-2.pdf"
+ },
+ "student_guide_2023_2024.pdf": {
+  "title": "دليل الطالب 2023-2024 (نسخة أقدم)",
+  "date": "2023",
+  "url": "https://www.paluniv.edu.ps/wp-content/uploads/2023/06/2023-2024-%D8%AF%D9%84%D9%8A%D9%84-%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8.pdf"
+ },
+ "bachelor_degree_regulation.pdf": {
+  "title": "نظام منح درجة البكالوريوس",
+  "date": "2016",
+  "url": "http://paluniv.edu.ps/wp-content/uploads/2016/01/Bachelor.pdf"
+ },
+ "diploma_degree_regulation.pdf": {
+  "title": "نظام منح درجة الدبلوم",
+  "date": "2016",
+  "url": "http://paluniv.edu.ps/wp-content/uploads/2016/01/doplom.pdf"
+ },
+ "basic_statute.pdf": {
+  "title": "النظام الأساسي للجامعة",
+  "date": "2020",
+  "url": "https://paluniv.edu.ps/wp-content/uploads/2020/09/%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85-%D8%A7%D9%84%D8%A7%D8%B3%D8%A7%D8%B3%D9%8A.pdf"
+ },
+ "admission_registration_regulations.html": {
+  "title": "الأنظمة واللوائح للقبول والتسجيل",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=136966"
+ },
+ "bachelor_requirements.html": {
+  "title": "شروط منح درجة البكالوريوس",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=136965"
+ },
+ "admission_faq.html": {
+  "title": "الأسئلة الشائعة - القبول والتسجيل",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=15551"
+ },
+ "new_students_admission.html": {
+  "title": "قبول الطلبة الجدد",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=137891"
+ },
+ "new_students_enrollment.html": {
+  "title": "الطلبة الجدد - آلية الالتحاق",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=136964"
+ },
+ "scholarships.html": {
+  "title": "المنح والمساعدات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=13757"
+ },
+ "payment_palpay.html": {
+  "title": "الدفع عن طريق PalPay",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=138288"
+ },
+ "admission_deanship.html": {
+  "title": "عمادة القبول والتسجيل",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=14224"
+ },
+ "bachelor_programs.html": {
+  "title": "برامج البكالوريوس",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=15510"
+ },
+ "diploma_programs.html": {
+  "title": "برامج الدبلوم",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=15609"
+ },
+ "programs/3161.html": {
+  "title": "برنامج أساليب تدريس اللغة العربية",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3161"
+ },
+ "programs/3218.html": {
+  "title": "برنامج الدراسات الإسلامية",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3218"
+ },
+ "programs/136958.html": {
+  "title": "برنامج اللغة الإنجليزية التطبيقية",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=136958"
+ },
+ "programs/139165.html": {
+  "title": "برنامج الخدمة الاجتماعية",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=139165"
+ },
+ "programs/141079.html": {
+  "title": "مركز اللغات",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=141079"
+ },
+ "programs/141239.html": {
+  "title": "برنامج دبلوم التأهيل التربوي‎‎",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=141239"
+ },
+ "programs/142750.html": {
+  "title": "برنامج التربية",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=142750"
+ },
+ "programs/142753.html": {
+  "title": "التربية الخاصة",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=142753"
+ },
+ "programs/142775.html": {
+  "title": "برنامج رياض الأطفال",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=142775"
+ },
+ "programs/144449.html": {
+  "title": "برنامج علم النفس",
+  "faculty": "كلية العلوم الإنسانية والتربوية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=144449"
+ },
+ "programs/3187.html": {
+  "title": "برنامج المحاسبة",
+  "faculty": "كلية العلوم الإدارية والمالية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3187"
+ },
+ "programs/3189.html": {
+  "title": "برنامج التمويل والتكنولوجيا المالية والمصرفية",
+  "faculty": "كلية العلوم الإدارية والمالية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3189"
+ },
+ "programs/3191.html": {
+  "title": "برنامج إدارة الأعمال",
+  "faculty": "كلية العلوم الإدارية والمالية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3191"
+ },
+ "programs/16232.html": {
+  "title": "برنامج التأمين وادارة المخاطر",
+  "faculty": "كلية العلوم الإدارية والمالية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=16232"
+ },
+ "programs/138493.html": {
+  "title": "برنامج التجارة والتسويق الإلكتروني",
+  "faculty": "كلية العلوم الإدارية والمالية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=138493"
+ },
+ "programs/3198.html": {
+  "title": "برنامج العلاج الطبيعي",
+  "faculty": "كلية العلوم الطبية المساندة",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3198"
+ },
+ "programs/3200.html": {
+  "title": "برنامج الأشعة / التصوير الطبي",
+  "faculty": "كلية العلوم الطبية المساندة",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3200"
+ },
+ "programs/139134.html": {
+  "title": "برنامج التمريض",
+  "faculty": "كلية العلوم الطبية المساندة",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=139134"
+ },
+ "programs/139149.html": {
+  "title": "برنامج التغذية الطبية العلاجية",
+  "faculty": "كلية العلوم الطبية المساندة",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=139149"
+ },
+ "programs/142552.html": {
+  "title": "برنامج العلوم الطبية المخبرية",
+  "faculty": "كلية العلوم الطبية المساندة",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=142552"
+ },
+ "programs/3207.html": {
+  "title": "برنامج تكنولوجيا المعلومات",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3207"
+ },
+ "programs/4446.html": {
+  "title": "برنامج أنظمة المعلومات الإدارية",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=4446"
+ },
+ "programs/5663.html": {
+  "title": "برنامج الوسائط المتعددة والإنتاج الرقمي",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=5663"
+ },
+ "programs/137544.html": {
+  "title": "هندسة النظم الذكية",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=137544"
+ },
+ "programs/139833.html": {
+  "title": "هندسة الحاسوب",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=139833"
+ },
+ "programs/139861.html": {
+  "title": "الهندسة المدنية وخدمات المباني",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=139861"
+ },
+ "programs/141454.html": {
+  "title": "الهندسة الكهربائية",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=141454"
+ },
+ "programs/141809.html": {
+  "title": "التصميم الداخلي والديكور",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=141809"
+ },
+ "programs/141831.html": {
+  "title": "برنامج صناعة المحتوى والإعلام الرقمي",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=141831"
+ },
+ "programs/144445.html": {
+  "title": "برنامج الأمن السيبراني",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=144445"
+ },
+ "programs/145638.html": {
+  "title": "بكالوريوس الذكاء الاصطناعي",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=145638"
+ },
+ "programs/145882.html": {
+  "title": "تكنولوجيا الأتمتة الصناعية",
+  "faculty": "كلية الهندسة وتكنولوجيا المعلومات",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=145882"
+ },
+ "programs/3214.html": {
+  "title": "برنامج القانون",
+  "faculty": "كلية الحقوق",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3214"
+ },
+ "programs/3226.html": {
+  "title": "برنامج إدارة وأتمتة المكاتب",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3226"
+ },
+ "programs/3230.html": {
+  "title": "برنامج المحاسبة التقنية",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=3230"
+ },
+ "programs/16354.html": {
+  "title": "برنامج تكنولوجيا الطاقة الشمسية",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=16354"
+ },
+ "programs/16362.html": {
+  "title": "برنامج التصميم الجرافيكي والمؤثرات البصرية",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=16362"
+ },
+ "programs/16435.html": {
+  "title": "برنامج صيانة الأجهزة المحمولة",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=16435"
+ },
+ "programs/136961.html": {
+  "title": "التسويق الرقمي",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=136961"
+ },
+ "programs/136962.html": {
+  "title": "برنامج تكنولوجيا الإعلام",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=136962"
+ },
+ "programs/136963.html": {
+  "title": "برنامج التأهيل المجتمعي",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=136963"
+ },
+ "programs/137469.html": {
+  "title": "برنامج الأراضي والمساحة",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=137469"
+ },
+ "programs/137472.html": {
+  "title": "برمجة تطبيقات الحاسوب والهواتف الذكية",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=137472"
+ },
+ "programs/140276.html": {
+  "title": "برنامج المساعد العدلي",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=140276"
+ },
+ "programs/140742.html": {
+  "title": "برنامج العلاج الطبيعي",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=140742"
+ },
+ "programs/141146.html": {
+  "title": "برنامج التمريض",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=141146"
+ },
+ "programs/144056.html": {
+  "title": "برنامج التجميل والعناية بالبشرة",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=144056"
+ },
+ "programs/144596.html": {
+  "title": "برنامج شبكات الحاسوب والإنترنت",
+  "faculty": "كلية المهن والعلوم التطبيقية",
+  "date": "2025",
+  "url": "https://www.paluniv.edu.ps/?page_id=144596"
+ }
+}

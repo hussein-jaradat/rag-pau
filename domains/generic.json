@@ -1,0 +1,15 @@
+{
+  "title_ar": "المساعد المعرفي",
+  "title_en": "Knowledge Assistant",
+  "icon": "📚",
+  "persona": "مساعد معرفي يجيب من المستندات المرفوعة فقط.",
+  "rules": [],
+  "disclaimer": "",
+  "samples": [
+    "ما هي الشروط المطلوبة؟",
+    "لخص أهم النقاط في المستند"
+  ],
+  "emergency": [],
+  "escalate": false,
+  "key": "generic"
+}

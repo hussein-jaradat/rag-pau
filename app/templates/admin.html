@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+.wrap{max-width:1180px;margin:0 auto;padding:22px}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:18px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kpi b{display:block;font-size:24px;line-height:1.2}
+.kpi span{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.panel h2{font-size:16px;margin:0 0 10px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:7px 6px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:13px}
+.n{font-weight:700;color:var(--ink-2);width:40px}
+.drop{border:2px dashed var(--line);border-radius:12px;padding:18px;text-align:center;color:var(--muted)}
+.drop.on{border-color:var(--olive);background:var(--olive-soft)}
+.del{border:0;background:none;color:var(--sumac);cursor:pointer}
+.eval td:last-child{font-weight:600}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}}
+</style>
+{% endblock %}
+{% block body %}
+<div class="wrap">
+  <h1 style="font-size:22px;margin:0 0 4px">لوحة الإدارة</h1>
+  <p class="muted" style="margin:0 0 16px">الفهرس: {{ info.get('chunks') }} مقطعاً · نموذج التضمين {{ info.get('embedder') }} · آخر بناء {{ info.get('built_at') }}</p>
+  <div class="kpis" id="kpis"></div>
+  <div class="grid">
+    <section class="panel"><h2>الأسئلة الأكثر تكراراً</h2><table id="top"></table></section>
+    <section class="panel"><h2>فجوات المعرفة: أسئلة بلا إجابة أو بتقييم سلبي</h2>
+      <p class="muted" style="font-size:13px;margin:-4px 0 8px">هذه قائمة المستندات التي تحتاج الجامعة لإضافتها.</p><table id="gaps"></table></section>
+    <section class="panel"><h2>الوثائق</h2>
+      <div class="drop" id="drop">اسحب ملفات PDF أو Word أو HTML هنا، أو <label style="color:var(--ink-2);cursor:pointer;text-decoration:underline">اختر ملفات<input type="file" id="file" multiple accept=".pdf,.docx,.txt,.md,.html,.csv" hidden></label><br><small>يُعاد بناء الفهرس تلقائياً بعد الرفع.</small></div>
+      <p id="upmsg" class="muted" style="font-size:13px"></p>
+      <div style="max-height:320px;overflow:auto"><table id="docs"></table></div>
+    </section>
+    <section class="panel"><h2>نتائج آخر تقييم</h2><table id="eval" class="eval"></table>
+      <p class="muted" style="font-size:13px">من <code>python -m eval.run_eval</code>.</p></section>
+    <section class="panel"><h2>المصادر الأكثر استخداماً</h2><table id="srcs"></table></section>
+  </div>
+</div>
+<script>
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function load(){
+  const a = await (await fetch('/api/analytics')).json(), t = a.totals;
+  const k = [['الأسئلة', t.questions], ['المستخدمون', t.users], ['نسبة الرفض', Math.round(t.refusal_rate*100)+'%'],
+             ['متوسط الزمن', t.avg_latency+' ث'], ['تقييم إيجابي', '👍 '+t.up+' · 👎 '+t.down], ['تكلفة النموذج', '$'+t.cost]];
+  document.getElementById('kpis').innerHTML = k.map(([l, v]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join('');
+  const rows = (list, empty) => list.length ? list.map(r => `<tr><td class="n">${r.n}</td><td>${esc(r.question)}</td></tr>`).join('') : `<tr><td class="muted">${empty}</td></tr>`;
+  document.getElementById('top').innerHTML = rows(a.top, 'لا توجد أسئلة بعد.');
+  document.getElementById('gaps').innerHTML = rows(a.gaps, 'لا توجد فجوات حتى الآن.');
+  document.getElementById('srcs').innerHTML = a.sources.length ? a.sources.map(([s, n]) => `<tr><td class="n">${n}</td><td>${esc(s)}</td></tr>`).join('') : '<tr><td class="muted">لا يوجد بعد.</td></tr>';
+  const ev = a.eval;
+  document.getElementById('eval').innerHTML = ev && ev.summary ? Object.entries(ev.summary).map(([k, v]) =>
+    `<tr><td>${k}</td><td>${typeof v === 'number' && v <= 1 && !/latency|cost/.test(k) ? Math.round(v*100)+'%' : v}</td></tr>`).join('')
+    + (ev.retrieval||[]).map(r => `<tr><td>retrieval ${r.mode} hit@${r.k}</td><td>${Math.round(r['hit@k']*100)}%</td></tr>`).join('')
+    : '<tr><td class="muted">لم يُشغَّل التقييم بعد.</td></tr>';
+}
+async function docs(){
+  const d = await (await fetch('/api/docs')).json();
+  document.getElementById('docs').innerHTML = '<tr><th>الملف</th><th>مقاطع</th><th></th></tr>' + d.map(x =>
+    `<tr><td>${esc(x.name)}</td><td>${x.chunks}</td><td><button class="del" onclick="del('${esc(x.name)}')">حذف</button></td></tr>`).join('');
+}
+async function upload(files){
+  const fd = new FormData(); for (const f of files) fd.append('files', f);
+  document.getElementById('upmsg').textContent = 'جارٍ الرفع وإعادة بناء الفهرس…';
+  const r = await (await fetch('/api/upload', {method:'POST', body: fd})).json();
+  document.getElementById('upmsg').textContent = r.saved.length ? `أُضيف ${r.saved.length} ملف. الفهرس الآن ${r.report.total_chunks} مقطعاً.` : 'لم يُرفع أي ملف بصيغة مدعومة.';
+  docs();
+}
+async function del(name){
+  if (!confirm('حذف ' + name + ' وإعادة بناء الفهرس؟')) return;
+  await fetch('/api/docs/' + encodeURIComponent(name), {method:'DELETE'}); docs();
+}
+const drop = document.getElementById('drop');
+drop.ondragover = e => { e.preventDefault(); drop.classList.add('on'); };
+drop.ondragleave = () => drop.classList.remove('on');
+drop.ondrop = e => { e.preventDefault(); drop.classList.remove('on'); upload(e.dataTransfer.files); };
+document.getElementById('file').onchange = e => upload(e.target.files);
+load(); docs();
+</script>
+{% endblock %}

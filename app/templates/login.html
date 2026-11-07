@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block body %}
+<main style="max-width:380px;margin:9vh auto;padding:0 16px">
+  <form method="post" style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px">
+    <h1 style="font-size:22px;margin:0 0 4px">تسجيل الدخول</h1>
+    <p class="muted" style="margin:0 0 18px;font-size:14px">لحفظ محادثاتك، وللمشرفين: لإدارة الوثائق والتحليلات.</p>
+    {% if error %}<p style="background:var(--sumac-soft);color:var(--sumac);padding:8px 12px;border-radius:8px;font-size:14px">{{ error }}</p>{% endif %}
+    <label style="display:block;font-size:14px;margin-bottom:4px">اسم المستخدم</label>
+    <input name="username" required minlength="3" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:12px">
+    <label style="display:block;font-size:14px;margin-bottom:4px">كلمة المرور</label>
+    <input name="password" type="password" required minlength="6" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:18px">
+    <div style="display:flex;gap:8px">
+      <button class="btn primary" name="action" value="login" style="flex:1">دخول</button>
+      <button class="btn" name="action" value="register" style="flex:1">إنشاء حساب</button>
+    </div>
+  </form>
+</main>
+{% endblock %}
